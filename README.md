@@ -80,3 +80,5 @@ To select the ZED from its serial number:
  ## EXECUTE
  After opening it in terminal to our working directory. ROS is started by typing ```roscore``` in our terminal.
  We open a second terminal and start the ZED camera on the ROS network by typing ```roslaunch zed_wrapper zed2i.launch.```
+ The Object_detection.py file must be started with the ```rosrun zed_wrapper Object_detection.py``` command.
+ Depth.py file After running Object_detection.py file, ```rosrun zed_wrapper Depth.py``` should be run.
