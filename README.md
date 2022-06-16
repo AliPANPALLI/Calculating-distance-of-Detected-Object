@@ -82,3 +82,4 @@ To select the ZED from its serial number:
  We open a second terminal and start the ZED camera on the ROS network by typing ```roslaunch zed_wrapper zed2i.launch.```
  The Object_detection.py file must be started with the ```rosrun zed_wrapper Object_detection.py``` command.
  Depth.py file After running Object_detection.py file, ```rosrun zed_wrapper Depth.py``` should be run.
+ Click to access [Yolo models](https://s2.dosya.tc/server17/sg2281/yolov3.zip.html).
