@@ -111,42 +111,7 @@ class Kamera():
             box_color = [int(each) for each in box_color]
             # roi = frame[start_y:end_y, start_x:end_x]
             
-            if predicted_id == 9 or predicted_id == 11:
-                
-                start_x1 = start_x + (end_x - start_x) / 2
-                start_x1 = int(start_x1)
-                start_y1 = start_y + (end_y - start_y) / 2
-                start_y1 = int(start_y1)
-                roi = frame[start_y1:end_y, start_x1:end_x]
-                data = cv2.medianBlur(roi, 5)
-                roi = cv2.cvtColor(data, cv2.COLOR_BGR2GRAY)
-                _, roi = cv2.threshold(roi, thresh=40, maxval=255, type=cv2.THRESH_BINARY_INV)
-                
-
-                mask = cv2.inRange(roi, 240, 255)
-                roi = cv2.dilate(mask, (3, 3), iterations=3)
-
-                contour, _ = cv2.findContours(roi, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-                for i in range(len(contour)):
-                    cv2.drawContours(roi, contour, i, (0, 0, 255), 4)
-
-                if 0 == len(contour):
-                    predicted_id = 9
-                    box_color = colors[predicted_id]
-                    box_color = [int(each) for each in box_color]
-                    label = labels[predicted_id]
-                    print("sola_donulmez")
-                    cv2.putText(frame,"Saga Don",(290,260),cv2.FONT_HERSHEY_DUPLEX,1,(0,255,255),2,cv2.LINE_4)
-
-
-                else:
-                    predicted_id = 11
-                    box_color = colors[predicted_id]
-                    box_color = [int(each) for each in box_color]
-                    label = labels[predicted_id]
-                    print("saga_donulmez")
-                    cv2.putText(frame,"Sola Don",(290,260),cv2.FONT_HERSHEY_DUPLEX,1,(0,255,255),2,cv2.LINE_4)
-
+           
             label = "{}: {:.2f}%".format(label, confidence * 100)
             # print("predicted object {}".format(label))
             
@@ -159,7 +124,6 @@ class Kamera():
             pub2.publish(start_y)
             pub3.publish(end_x)
             pub4.publish(end_y)
-            cv2.imshow("roi", roi)
         except:
             pass
         cv2.imshow("Detector", frame)
