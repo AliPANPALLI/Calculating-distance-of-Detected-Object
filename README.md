@@ -32,8 +32,9 @@ tf2_ros
 message_generation
 nodelet
 Open a terminal, clone the repository, update the dependencies and build the packages:
-
-'$ cd ~/catkin_ws/src'
+'''
+$ cd ~/catkin_ws/src
+'''
 $ git clone --recursive https://github.com/stereolabs/zed-ros-wrapper.git
 $ cd ../
 $ rosdep install --from-paths src --ignore-src -r -y
