@@ -60,6 +60,7 @@ class depth_processing():
         
         self.dist=(depth_array[u,v])
         self.dist=str(self.dist)
+        rospy.loginfo('Dist: {}'.format(self.dist))
         pub.publish(self.dist)
         cv2.imshow("image", image)
         cv2.waitKey(1)
